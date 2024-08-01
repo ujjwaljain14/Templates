@@ -3,7 +3,6 @@ using namespace std;
 #define ll long long int
 
 void floydWarshall(int n, vector<vector<ll>> &cost, vector<vector<ll>> adj){
-
     for(int k=1;k<=n;k++){
         for(int i=1;i<=n;i++){
             for(int j=1;j<=n;j++){
@@ -11,7 +10,6 @@ void floydWarshall(int n, vector<vector<ll>> &cost, vector<vector<ll>> adj){
             }
         }   
     }
-
 }
 
 void sol(){
@@ -24,8 +22,8 @@ void sol(){
         cin>>a>>b>>c;
         adj[a].push_back(b);
         adj[b].push_back(a);
-        cost[a][b]=c;
-        cost[b][a]=c;
+        cost[a][b]=min(c,cost[a][b]);
+        cost[b][a]=min(c,cost[b][a]);
     }
     for(int i=1;i<=n;i++)cost[i][i]=0;
     floydWarshall(n,cost,adj);
