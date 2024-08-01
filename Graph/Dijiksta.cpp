@@ -12,7 +12,7 @@ void djikstra(int source, int n, vector<vector<pair<int,ll>>>&edges, vector<ll> 
         pair<ll,int> curr = pq.top();
         pq.pop();
         if(dis[curr.second]!= curr.first)continue;
-        for(auto edge: adj[curr.second]){
+        for(auto edge: edges[curr.second]){
             if(dis[edge.first] > curr.first + edge.second){
                 dis[edge.first] = curr.first + edge.second;
                 pq.push({dis[edge.first],edge.first});
